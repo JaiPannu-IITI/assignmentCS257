@@ -1,7 +1,7 @@
 document
   .getElementById("registrationForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     let userId = document.getElementById("userId").value;
     let password = document.getElementById("password").value;

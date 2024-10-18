@@ -5,10 +5,10 @@ import re
 
 app = Flask(__name__)
 
-# MySQL configurations
+
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'  # Replace with your MySQL username
-app.config['MYSQL_PASSWORD'] = 'password'  # Replace with your MySQL password
+app.config['MYSQL_USER'] = 'root'  
+app.config['MYSQL_PASSWORD'] = 'password'  
 app.config['MYSQL_DB'] = 'user_registration'
 
 mysql = MySQL(app)
@@ -23,7 +23,7 @@ def register_user():
     mobile_number = request.form['mobileNumber']
     password = request.form['password']
 
-    # Input validation
+    
     if len(user_id) < 5:
         return render_template('register.html', message="User ID must be at least 5 characters long.")
     elif not re.match(r'^[0-9]{10}$', mobile_number):
@@ -31,7 +31,7 @@ def register_user():
     elif len(password) < 6:
         return render_template('register.html', message="Password must be at least 6 characters long.")
     
-    # Insert user data into MySQL
+    
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute('INSERT INTO users (user_id, mobile_number, password) VALUES (%s, %s, %s)', (user_id, mobile_number, password))
     mysql.connection.commit()
