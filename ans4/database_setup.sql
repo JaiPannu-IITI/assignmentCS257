@@ -1,4 +1,3 @@
--- database_setup.sql
 CREATE DATABASE user_login_registration;
 
 USE user_login_registration;
